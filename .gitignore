@@ -1,0 +1,9 @@
+# All dirs
+*/coverage
+*/node_modules
+*/*env*
+!*/.env.example
+*/*.sql
+*/.vscode
+*/**/.env.test
+# Server
