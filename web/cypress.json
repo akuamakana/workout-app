@@ -1,0 +1,7 @@
+{
+  "component": {
+    "testFiles": "**/*.test.{js,ts,jsx,tsx}",
+    "componentFolder": "__test__"
+  },
+  "baseUrl": "http://localhost:3000"
+}

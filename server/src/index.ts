@@ -3,17 +3,25 @@ import { ApolloServer } from 'apollo-server-express';
 import connectRedis from 'connect-redis';
 import express from 'express';
 import session from 'express-session';
-import createSchema from 'lib/createSchema';
-import prisma from 'lib/prisma';
-import redis from 'lib/redis';
+import createSchema from 'utils/createSchema';
+import prisma from 'utils/prisma';
+import redis from 'utils/redis';
 import path from 'path';
+
 const dotenvPath = process.env.NODE_ENV === 'production' ? path.join(__dirname, '..', '.env') : path.join(__dirname, '..', `.env.${process.env.NODE_ENV}`);
 require('dotenv').config({ path: dotenvPath });
 
 const PORT = process.env.PORT || 4000;
+const whitelist = ['http://localhost:3000', 'https://studio.apollographql.com', 'http://localhost:4000/graphql'];
 const corsOptions = {
   credentials: true,
-  origin: 'https://studio.apollographql.com',
+  origin: function (origin: string, callback: any) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  } as any,
 };
 
 const main = async () => {
@@ -31,11 +39,11 @@ const main = async () => {
       }),
       name: process.env.SECRET_COOKIE,
       secret: process.env.SECRET_SESSION as string,
-      resave: false,
+      resave: true,
       saveUninitialized: false,
       cookie: {
         httpOnly: true,
-        secure: true,
+        secure: false,
         maxAge: 1000 * 60 * 60 * 24 * 7 * 365, // 7 years
         sameSite: 'none',
       },
@@ -54,6 +62,7 @@ const main = async () => {
   });
 };
 
+{' '}
 main()
   .catch((e: any) => {
     console.error('\x1b[31m', e);

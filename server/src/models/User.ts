@@ -10,4 +10,10 @@ export class User {
 
   @Field()
   email: string;
+
+  @Field()
+  firstName: string;
+
+  @Field()
+  lastName: string;
 }

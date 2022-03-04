@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "db:clear": "DATABASE_URL=postgresql://postgres:Hawaii3274!@localhost:5432/workout_buddy_test prisma migrate reset --force",
+    "db:clear": "DATABASE_URL=postgresql://postgres:Hawaii3274!@localhost:5432/workout_buddy prisma migrate reset --force",
+    "db:migrate": "DATABASE_URL=postgresql://postgres:Hawaii3274!@localhost:5432/workout_buddy prisma migrate dev",
     "test": "yarn db:clear && dotenv_config_path=/.env.test NODE_ENV=test jest",
     "test2": "jest",
     "dev": "NODE_ENV=development ts-node-dev --respawn -r tsconfig-paths/register src/index.ts"
@@ -25,10 +26,12 @@
     "express-session": "^1.17.2",
     "graphql": "^15.3.0",
     "ioredis": "^4.28.5",
+    "nodemailer": "^6.7.2",
     "prisma": "3.9.2",
     "reflect-metadata": "^0.1.13",
     "type-graphql": "^1.1.1",
-    "typegraphql-prisma": "^0.19.0"
+    "typegraphql-prisma": "^0.19.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/connect-redis": "^0.0.18",
@@ -40,6 +43,8 @@
     "@types/ioredis": "^4.28.8",
     "@types/jest": "^27.4.1",
     "@types/node": "^17.0.21",
+    "@types/nodemailer": "^6.4.4",
+    "@types/uuid": "^8.3.4",
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
     "ts-jest": "^27.1.3",

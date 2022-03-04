@@ -1,4 +1,4 @@
-import createSchema from 'lib/createSchema';
+import createSchema from 'utils/createSchema';
 import { graphql } from 'graphql';
 import { Maybe } from 'graphql/jsutils/Maybe';
 
@@ -19,6 +19,9 @@ const gCall = async ({ source, variableValues, userId }: Options) => {
         session: {
           userId,
           destroy: jest.fn(),
+        },
+        headers: {
+          Authorization: '1',
         },
       },
       res: {
