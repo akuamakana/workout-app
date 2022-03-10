@@ -30,7 +30,7 @@ const Index: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Workout Buddy - Home</title>
+        <title>Workout Buddy</title>
         <meta name="description" content="Workout Buddy" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

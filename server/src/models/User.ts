@@ -1,4 +1,5 @@
 import { ObjectType, Field, ID } from 'type-graphql';
+import { Workout } from './Workout';
 
 @ObjectType()
 export class User {
@@ -16,4 +17,11 @@ export class User {
 
   @Field()
   lastName: string;
+
+  verified: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+
+  @Field(() => [Workout])
+  workouts?: Workout[];
 }

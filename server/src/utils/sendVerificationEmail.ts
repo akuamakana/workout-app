@@ -1,7 +1,7 @@
-import { User } from 'models/User';
+import { User } from '@models/User';
 import { v4 } from 'uuid';
 import redis from './redis';
-import sendEmail from './sendEmail';
+import { sendEmail } from './sendEmail';
 
 const sendVerificationEmail = async (user: User) => {
   const token = v4();
