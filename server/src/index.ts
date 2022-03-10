@@ -3,12 +3,13 @@ import { ApolloServer } from 'apollo-server-express';
 import connectRedis from 'connect-redis';
 import express from 'express';
 import session from 'express-session';
-import createSchema from 'utils/createSchema';
-import prisma from 'utils/prisma';
-import redis from 'utils/redis';
+import createSchema from '@utils/createSchema';
+import prisma from '@utils/prisma';
+import redis from '@utils/redis';
 import path from 'path';
 
 const dotenvPath = process.env.NODE_ENV === 'production' ? path.join(__dirname, '..', '.env') : path.join(__dirname, '..', `.env.${process.env.NODE_ENV}`);
+console.log(dotenvPath);
 require('dotenv').config({ path: dotenvPath });
 
 const PORT = process.env.PORT || 4000;
@@ -62,7 +63,9 @@ const main = async () => {
   });
 };
 
-{' '}
+{
+  (' ');
+}
 main()
   .catch((e: any) => {
     console.error('\x1b[31m', e);

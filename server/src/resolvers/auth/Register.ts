@@ -1,9 +1,9 @@
 import sendVerificationEmail from '@utils/sendVerificationEmail';
 import argon2 from 'argon2';
-import { RegisterInput } from 'models/Inputs/RegisterInput';
-import { User } from 'models/User';
+import { RegisterInput } from '@models/Inputs/RegisterInput';
+import { User } from '@models/User';
 import { Arg, Mutation, Resolver } from 'type-graphql';
-import prisma from 'utils/prisma';
+import prisma from '@utils/prisma';
 
 @Resolver()
 class RegisterResolver {

@@ -50,7 +50,7 @@ const Login: NextPage = () => {
           <Formik initialValues={{ usernameOrEmail: '', password: '' }} onSubmit={handleOnSubmit}>
             {() => (
               <Form>
-                <VStack spacing={6}>
+                <VStack spacing={6} alignItems="stretch">
                   <Heading>Login</Heading>
                   {loginResult.error && (
                     <Alert status="warning">

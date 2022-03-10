@@ -1,7 +1,7 @@
 import argon2 from 'argon2';
 import { Arg, Ctx, Mutation, Resolver, ForbiddenError } from 'type-graphql';
-import { User } from 'models/User';
-import prisma from 'utils/prisma';
+import { User } from '@models/User';
+import prisma from '@utils/prisma';
 import { MyContext } from 'types/MyContext';
 
 @Resolver()

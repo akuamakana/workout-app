@@ -57,14 +57,14 @@ const Register: NextPage = () => {
           <Formik initialValues={{ email: '', username: '', password: '', confirmPassword: '', firstName: '', lastName: '' } as RegisterInputs} onSubmit={handleOnSubmit}>
             {() => (
               <Form>
-                <VStack spacing={6}>
+                <VStack alignItems="stretch" spacing={6}>
                   {showAlert && (
                     <Alert status="info">
                       <AlertIcon />
                       <AlertDescription>A confirmation email has been sent. Please check your email and follow the link to confirm your account.</AlertDescription>
                     </Alert>
                   )}
-                  <Heading>Register</Heading>
+                  <Heading textAlign={'center'}>Register</Heading>
                   <HStack alignItems={'baseline'}>
                     <InputField data-testid="form-input" name="firstName" label="First Name" placeholder="First Name" />
                     <InputField data-testid="form-input" name="lastName" label="Last Name" placeholder="Last Name" />

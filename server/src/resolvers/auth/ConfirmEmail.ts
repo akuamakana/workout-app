@@ -1,7 +1,7 @@
 import { Ctx, Mutation, Resolver } from 'type-graphql';
 import { MyContext } from 'types/MyContext';
-import redis from 'utils/redis';
-import prisma from 'utils/prisma';
+import redis from '@utils/redis';
+import prisma from '@utils/prisma';
 
 @Resolver()
 class ConfirmEmailResolver {
@@ -10,11 +10,13 @@ class ConfirmEmailResolver {
     // get token from url
     const auth = ctx.req.headers.authorization;
     const email = ctx.req.headers.email;
+
     if (!auth || !email) {
       return false;
     }
     // find user with redis
     let token = await redis.get(auth);
+
     if (!token || token !== email) {
       return false;
     }
@@ -27,6 +29,7 @@ class ConfirmEmailResolver {
         verified: true,
       },
     });
+
     await redis.del([auth]);
     return true;
   }

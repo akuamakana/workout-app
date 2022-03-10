@@ -1,8 +1,8 @@
-import { PasswordInput } from 'models/Inputs/PasswordInput';
+import { PasswordInput } from '@models/Inputs/PasswordInput';
 import { Arg, Ctx, Mutation, Resolver } from 'type-graphql';
 import { MyContext } from 'types/MyContext';
-import redis from 'utils/redis';
-import prisma from 'utils/prisma';
+import redis from '@utils/redis';
+import prisma from '@utils/prisma';
 import argon2 from 'argon2';
 
 @Resolver()

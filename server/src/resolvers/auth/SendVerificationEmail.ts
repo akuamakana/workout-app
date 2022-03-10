@@ -1,6 +1,6 @@
-import sendVerificationEmail from 'utils/sendVerificationEmail';
 import { Arg, Mutation, Resolver } from 'type-graphql';
-import prisma from 'utils/prisma';
+import sendVerificationEmail from '@utils/sendVerificationEmail';
+import prisma from '@utils/prisma';
 
 @Resolver()
 class SendVerificationEmailResolver {

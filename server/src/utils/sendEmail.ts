@@ -1,14 +1,15 @@
+/* istanbul ignore file */
 import nodemailer from 'nodemailer';
 
-const sendEmail = async (email: string, message: string, link: string) => {
+export const sendEmail = async (email: string, message: string, link: string) => {
   // const testAccount = await nodemailer.createTestAccount();
   let transporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email',
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: 'w5echetzeolpknaf@ethereal.email', // generated ethereal user
-      pass: 'uBtQBSh14TgnWGtevj', // generated ethereal password
+      user: 'q5zfgwjlkb6lasxk@ethereal.email', // generated ethereal user
+      pass: 'aw9U25zM5H8Bg8s437', // generated ethereal password
     },
   });
 
@@ -20,5 +21,3 @@ const sendEmail = async (email: string, message: string, link: string) => {
 
   console.log('Preview URL: ' + nodemailer.getTestMessageUrl(results));
 };
-
-export default sendEmail;

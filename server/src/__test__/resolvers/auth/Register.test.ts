@@ -1,5 +1,9 @@
 import gCall from '../../utils/gCall';
 
+jest.mock('@utils/sendEmail', () => ({
+  sendEmail: jest.fn(() => true),
+}));
+
 describe('Register', () => {
   const registerMutation = `
   mutation Register($input: RegisterInput!) {
@@ -7,6 +11,8 @@ describe('Register', () => {
       id
       username
       email
+      firstName
+      lastName
     }
   }
   `;
@@ -16,6 +22,8 @@ describe('Register', () => {
       email: 'jest@jest.com',
       username: 'jest',
       password: 'jest',
+      firstName: 'jest',
+      lastName: 'jest',
     },
   };
 
@@ -24,12 +32,15 @@ describe('Register', () => {
       source: registerMutation,
       variableValues: userData,
     });
+
     expect(data).toMatchObject({
       data: {
         register: {
           email: 'jest@jest.com',
           id: '1',
           username: 'jest',
+          firstName: 'jest',
+          lastName: 'jest',
         },
       },
     });
@@ -41,11 +52,13 @@ describe('Register', () => {
       variableValues: {
         input: {
           email: 'jest@jest.com',
-          username: 'jest2',
+          username: 'jester',
           password: 'jest',
+          firstName: 'jester',
+          lastName: 'jest',
         },
       },
     });
-    expect(errors).toMatchSnapshot();
+    expect(errors![0].message).toBe('Argument Validation Error');
   });
 });

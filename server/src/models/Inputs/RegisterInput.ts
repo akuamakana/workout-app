@@ -1,7 +1,7 @@
-import { PasswordInput } from 'models/Inputs/PasswordInput';
+import { PasswordInput } from '@models/Inputs/PasswordInput';
 import { IsEmail, Length, NotContains } from 'class-validator';
 import { Field, InputType } from 'type-graphql';
-import { IsEmailAlreadyExist } from 'validators/isEmailAlreadyExist';
+import { IsEmailAlreadyExist } from '@validators/isEmailAlreadyExist';
 
 @InputType()
 export class RegisterInput extends PasswordInput {
